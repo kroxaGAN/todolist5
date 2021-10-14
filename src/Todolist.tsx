@@ -62,7 +62,7 @@ export function Todolist(props: PropsType) {
     return <div>
         <h3>
             {props.title}
-            <button onClick={onClickHandlerForTodolist}>DEL</button>
+            <Button name={'DEL'} callBack={onClickHandlerForTodolist}/>
         </h3>
         <div>
             <Input
@@ -72,12 +72,7 @@ export function Todolist(props: PropsType) {
                 setError={setError}
                 addTask={addTask}
             />
-            {/*<input value={title}*/}
-            {/*       onChange={onChangeHandler}*/}
-            {/*       onKeyPress={onKeyPressHandler}*/}
-            {/*       className={error ? "error" : ""}*/}
-            {/*/>*/}
-            <button onClick={addTask}>+</button>
+            <Button name={'add task'} callBack={addTask}/>
             {error && <div className="error-message">{error}</div>}
         </div>
         <ul>
@@ -88,7 +83,7 @@ export function Todolist(props: PropsType) {
                                onChange={(e) => onChangeHandlerCheckBox(e, t.id)}
                                checked={t.isDone}/>
                         <span>{t.title}</span>
-                        <button onClick={() => onClickHandler(t.id)}>x</button>
+                        <Button name={'del task'} callBack={() => onClickHandler(t.id)}/>
                     </li>
                 })
             }
