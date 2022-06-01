@@ -2,6 +2,7 @@ import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterValuesType} from './App';
 import {Button} from "./components/Button";
 import {Input} from "./components/Input";
+import {AddItemForm} from "./components/AddItemForm";
 
 type TaskType = {
     id: string
@@ -23,17 +24,17 @@ type PropsType = {
 
 export function Todolist(props: PropsType) {
 
-    let [title, setTitle] = useState("")
-    let [error, setError] = useState<string | null>(null)
+    // let [title, setTitle] = useState("")
+    // let [error, setError] = useState<string | null>(null)
 
-    const addTask = () => {
-        if (title.trim() !== "") {
-            props.addTask(props.todolistID, title.trim());
-            setTitle("");
-        } else {
-            setError("Title is required");
-        }
-    }
+    // const addTask = () => {
+    //     if (title.trim() !== "") {
+    //         props.addTask(props.todolistID, title.trim());
+    //         setTitle("");
+    //     } else {
+    //         setError("Title is required");
+    //     }
+    // }
 
     // const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     //     setTitle(e.currentTarget.value)
@@ -58,23 +59,27 @@ export function Todolist(props: PropsType) {
     const onChangeHandlerCheckBox = (e: ChangeEvent<HTMLInputElement>, taskID: string) => {
         props.changeTaskStatus(props.todolistID, taskID, e.currentTarget.checked);
     }
+    const inputHandler=(title:string)=>{
+        props.addTask(props.todolistID,title)
+    }
 
     return <div>
         <h3>
             {props.title}
             <Button name={'DEL'} callBack={onClickHandlerForTodolist}/>
         </h3>
-        <div>
-            <Input
-                title={title}
-                setTitle={setTitle}
-                error={error}
-                setError={setError}
-                addTask={addTask}
-            />
-            <Button name={'add task'} callBack={addTask}/>
-            {error && <div className="error-message">{error}</div>}
-        </div>
+        {/*<div>*/}
+        {/*    <Input*/}
+        {/*        title={title}*/}
+        {/*        setTitle={setTitle}*/}
+        {/*        error={error}*/}
+        {/*        setError={setError}*/}
+        {/*        addTask={addTask}*/}
+        {/*    />*/}
+        {/*    <Button name={'add task'} callBack={addTask}/>*/}
+        {/*    {error && <div className="error-message">{error}</div>}*/}
+        {/*</div>*/}
+        <AddItemForm callback={inputHandler}/>
         <ul>
             {
                 props.tasks.map(t => {
