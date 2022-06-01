@@ -64,21 +64,12 @@ export function Todolist(props: PropsType) {
     }
 
     return <div>
+
         <h3>
             {props.title}
             <Button name={'DEL'} callBack={onClickHandlerForTodolist}/>
         </h3>
-        {/*<div>*/}
-        {/*    <Input*/}
-        {/*        title={title}*/}
-        {/*        setTitle={setTitle}*/}
-        {/*        error={error}*/}
-        {/*        setError={setError}*/}
-        {/*        addTask={addTask}*/}
-        {/*    />*/}
-        {/*    <Button name={'add task'} callBack={addTask}/>*/}
-        {/*    {error && <div className="error-message">{error}</div>}*/}
-        {/*</div>*/}
+
         <AddItemForm callback={inputHandler}/>
         <ul>
             {
