@@ -73,6 +73,9 @@ function App() {
     const updateTodoTitle=(todolistID: string,title:string)=>{
         setTodolists(todolists.map(el=>el.id===todolistID ?{...el,title:title}:el))
     }
+    const updateTaskTitle=(todolistID: string, taskId: string,title:string)=>{
+        setTasks({...tasks,[todolistID]:tasks[todolistID].map(el=>el.id===taskId?{...el,title:title}:el)})
+    }
 
 
     return (
@@ -100,6 +103,7 @@ function App() {
                             filter={m.filter}
                             removeTodolist={removeTodolist}
                             updateTodoTitle={updateTodoTitle}
+                            updateTaskTitle={updateTaskTitle}
                         />
                     )
                 })
